@@ -238,7 +238,7 @@ func (entry *Entry) log(level Level, msg string) {
 	defer func() {
 		newEntry.Caller = nil
 	}()
-	if reportCaller && newEntry.Caller != nil {
+	if reportCaller && newEntry.Caller == nil {
 		newEntry.Caller = getCaller()
 	}
 
