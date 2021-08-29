@@ -235,7 +235,10 @@ func (entry *Entry) log(level Level, msg string) {
 	bufPool := newEntry.getBufferPool()
 	newEntry.Logger.mu.Unlock()
 
-	if reportCaller {
+	defer func() {
+		newEntry.Caller = nil
+	}()
+	if reportCaller && newEntry.Caller != nil {
 		newEntry.Caller = getCaller()
 	}
 
