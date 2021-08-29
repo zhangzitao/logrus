@@ -83,7 +83,7 @@ func (entry *Entry) Dup() *Entry {
 	for k, v := range entry.Data {
 		data[k] = v
 	}
-	return &Entry{Logger: entry.Logger, Data: data, Time: entry.Time, Context: entry.Context, err: entry.err}
+	return &Entry{Logger: entry.Logger, Data: data, Time: entry.Time, Context: entry.Context, Caller: entry.Caller, err: entry.err}
 }
 
 // Returns the bytes representation of this entry from the formatter.
